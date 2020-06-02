@@ -1,7 +1,9 @@
 {
   "name": "shifeiqi.top",
   "private": true,
-  "engines": {"node": "12.x"},
+  "engines": {
+    "node": "12.x"
+  },
   "version": "1.0.0",
   "dependencies": {
     "gatsby": "^2.0.76",
@@ -33,6 +35,7 @@
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
+    "rimraf": "^3.0.2",
     "typography": "^0.16.17",
     "typography-theme-wordpress-2016": "^0.15.10"
   },
@@ -50,7 +53,7 @@
     "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "build": "rm -rf public && rm -rf .cache && gatsby build",
+    "build": "rimraf -rf public && rimraf -rf .cache && gatsby build",
     "now-build": "gatsby build",
     "deploy": "yarn build && cp now.json public/",
     "dry": "yarn build && cp now.json public/ && cd public && now",

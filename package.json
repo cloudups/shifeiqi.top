@@ -2,7 +2,7 @@
   "name": "shifeiqi.top",
   "private": true,
   "engines": {
-    "node": "12.x"
+    "node": ">12.x"
   },
   "version": "1.0.0",
   "dependencies": {

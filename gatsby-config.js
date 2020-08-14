@@ -3,7 +3,7 @@ module.exports = {
     title: 'shifeiqi.top',
     author: 'Feiqi Shi',
     description: 'Personal blog by Feiqi Shi. Enjoy life, enjoy coding.',
-    siteUrl: 'https://shifeiqi.top'
+    siteUrl: 'https://shifeiqi.top',
   },
   pathPrefix: '/',
   plugins: [
@@ -12,6 +12,14 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        // jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
       },
     },
     {

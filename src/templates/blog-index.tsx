@@ -9,12 +9,15 @@ import React from 'react';
 import SEO from '../components/SEO';
 import get from 'lodash/get';
 import { rhythm } from '../utils/typography';
-import { PageProps, } from "gatsby";
+import { PageProps } from 'gatsby';
 
-type LocaleLookUpInfo = { translationStrings: any } & { langKey: string, slug: string }
-type IndexPageProps = PageProps<{}, LocaleLookUpInfo>
+type LocaleLookUpInfo = { translationStrings: any } & {
+  langKey: string;
+  slug: string;
+};
+type IndexPageProps = PageProps<{}, LocaleLookUpInfo>;
 
-const BlogIndexTemplate: React.FC<IndexPageProps> = (props) => {
+const BlogIndexTemplate: React.FC<IndexPageProps> = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title');
   const langKey = props.pageContext.langKey;
   const posts = get(props, 'data.allMarkdownRemark.edges');
@@ -35,8 +38,8 @@ const BlogIndexTemplate: React.FC<IndexPageProps> = (props) => {
               rel="noopener noreferrer"
             >
               translated by the community
-              </a>
-              .
+            </a>
+            .
           </Panel>
         )}
 
@@ -75,7 +78,7 @@ const BlogIndexTemplate: React.FC<IndexPageProps> = (props) => {
       <Footer />
     </Layout>
   );
-}
+};
 
 export default BlogIndexTemplate;
 

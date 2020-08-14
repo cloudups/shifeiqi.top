@@ -1,15 +1,15 @@
 import React from 'react';
 
 interface Props {
-  htmlAttributes: object
-  headComponents: []
-  bodyAttributes: object
-  preBodyComponents: []
-  body: string
-  postBodyComponents: []
+  htmlAttributes: object;
+  headComponents: [];
+  bodyAttributes: object;
+  preBodyComponents: [];
+  body: string;
+  postBodyComponents: [];
 }
 
-const HTML: React.FC<Props> = (props) => {
+const HTML: React.FC<Props> = props => {
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -66,6 +66,6 @@ const HTML: React.FC<Props> = (props) => {
       </body>
     </html>
   );
-}
+};
 
 export default HTML;

@@ -2,7 +2,7 @@
   "name": "shifeiqi.top",
   "private": true,
   "engines": {
-    "node": ">12.x"
+    "node": ">=10.x"
   },
   "version": "1.0.0",
   "dependencies": {
@@ -52,15 +52,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "gatsby develop",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
+    "format": "prettier --write {gatsby-*.js,src/**/*.{js,jsx,json,css,tsx,ts}}",
+    "start": "gatsby develop",
     "build": "rimraf -rf public && rimraf -rf .cache && gatsby build",
     "now-build": "gatsby build",
-    "deploy": "yarn build && cp now.json public/",
-    "dry": "yarn build && cp now.json public/ && cd public && now",
+    "deploy": "npm run build && cp now.json public/",
+    "dry": "npm run build && cp now.json public/ && cd public && now",
     "js-to-jsx": "node src/utils/js-to-jsx"
   },
   "husky": {
@@ -69,12 +67,12 @@
     }
   },
   "lint-staged": {
-    "{gatsby-*.js,src/**/*.{js,jsx,json,css}}": [
-      "yarn format",
+    "{gatsby-*.js,src/**/*.{js,jsx,json,css,ts,tsx}}": [
+      "npm run format",
       "git add"
     ],
     "src/pages/**/*.md": [
-      "yarn run js-to-jsx",
+      "npm run js-to-jsx",
       "git add"
     ]
   },

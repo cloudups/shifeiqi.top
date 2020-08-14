@@ -17,11 +17,11 @@ const query = graphql`
 `;
 
 interface SEOProps {
-  description?: string
-  image?: string
-  meta?: []
-  slug?: string
-  title: string
+  description?: string;
+  image?: string;
+  meta?: [];
+  slug?: string;
+  title: string;
 }
 
 function SEO({ meta, image, title, description, slug, lang = 'en' }) {
@@ -38,12 +38,12 @@ function SEO({ meta, image, title, description, slug, lang = 'en' }) {
             htmlAttributes={{ lang }}
             {...(title
               ? {
-                titleTemplate: `%s — ${siteMetadata.title}`,
-                title,
-              }
+                  titleTemplate: `%s — ${siteMetadata.title}`,
+                  title,
+                }
               : {
-                title: `${siteMetadata.title} — A blog by Feiqi Shi`,
-              })}
+                  title: `${siteMetadata.title} — A blog by Feiqi Shi`,
+                })}
             meta={[
               {
                 name: 'description',
@@ -77,15 +77,15 @@ function SEO({ meta, image, title, description, slug, lang = 'en' }) {
               .concat(
                 metaImage
                   ? [
-                    {
-                      property: 'og:image',
-                      content: metaImage,
-                    },
-                    {
-                      name: 'twitter:image',
-                      content: metaImage,
-                    },
-                  ]
+                      {
+                        property: 'og:image',
+                        content: metaImage,
+                      },
+                      {
+                        name: 'twitter:image',
+                        content: metaImage,
+                      },
+                    ]
                   : []
               )
               .concat(meta)}

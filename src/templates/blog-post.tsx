@@ -16,7 +16,7 @@ import {
   loadFontsForCode,
   replaceAnchorLinksByLanguage,
 } from '../utils/i18n';
-import { PageProps } from "gatsby";
+import { PageProps } from 'gatsby';
 
 const GITHUB_USERNAME = 'gaearon';
 const GITHUB_REPO_NAME = 'overreacted.io';
@@ -24,17 +24,20 @@ const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif`;
 
-type BlogPostQueryProps = {}
-type LocaleLookUpInfo = { translationStrings: any } & { langKey: string, slug: string } & {
-  slug: any
-  previous: any
-  next: any
-  translations: any
-  translatedLinks: any
-}
-type BlogPostTemplateProps = PageProps<BlogPostQueryProps, LocaleLookUpInfo>
+type BlogPostQueryProps = {};
+type LocaleLookUpInfo = { translationStrings: any } & {
+  langKey: string;
+  slug: string;
+} & {
+  slug: any;
+  previous: any;
+  next: any;
+  translations: any;
+  translatedLinks: any;
+};
+type BlogPostTemplateProps = PageProps<BlogPostQueryProps, LocaleLookUpInfo>;
 
-const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
+const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
   const post = get(props, 'data.markdownRemark');
   const siteTitle = get(props, 'data.site.siteMetadata.title');
   let {
@@ -117,8 +120,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
             margin: '60px 0 40px 0',
             fontFamily: systemFont,
           }}
-        >
-        </div>
+        ></div>
         <h3
           style={{
             fontFamily: 'Montserrat, sans-serif',
@@ -134,7 +136,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
             to={'/'}
           >
             shifeiqi.top
-            </Link>
+          </Link>
         </h3>
         <Bio />
         <nav>
@@ -170,7 +172,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
       </aside>
     </Layout>
   );
-}
+};
 
 export default BlogPostTemplate;
 

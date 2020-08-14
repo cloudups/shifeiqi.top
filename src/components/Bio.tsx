@@ -22,13 +22,12 @@ const Bio: React.FC = () => {
         }}
       />
       <p style={{ maxWidth: 310 }}>
-        Personal blog by{' '}
-        <a href="https://github.com/cloudups">Feiqi Shi</a>.{' '}
+        Personal blog by <a href="https://github.com/cloudups">Feiqi Shi</a>.{' '}
         <br />
-          Enjoy life, enjoy coding.
-        </p>
+        Enjoy life, enjoy coding.
+      </p>
     </div>
   );
-}
+};
 
 export default Bio;

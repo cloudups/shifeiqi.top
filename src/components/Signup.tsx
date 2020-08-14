@@ -6,10 +6,10 @@ const REACT_COMPONENTS_FORM_ID = '1181861';
 const OVERREACTED_FORM_ID = '812047';
 
 interface SignupProps {
-  cta: string
+  cta: string;
 }
 
-const Signup: React.FC<SignupProps> = (props) => {
+const Signup: React.FC<SignupProps> = props => {
   let form,
     { cta } = props;
   switch (cta) {
@@ -165,12 +165,12 @@ const Signup: React.FC<SignupProps> = (props) => {
             <p>I won’t send you spam.</p>
             <p>
               Unsubscribe at <em>any</em> time.
-              </p>
+            </p>
           </div>
         </div>
       </div>
     </form>
   );
-}
+};
 
 export default Signup;

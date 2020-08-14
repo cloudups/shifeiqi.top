@@ -15,13 +15,13 @@ const Footer: React.FC = () => {
         rel="noopener noreferrer"
       >
         github
-        </a>{' '}
-        &bull;{' '}
+      </a>{' '}
+      &bull;{' '}
       <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
         rss
-        </a>
+      </a>
     </footer>
   );
-}
+};
 
 export default Footer;

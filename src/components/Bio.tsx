@@ -22,9 +22,9 @@ const Bio: React.FC = () => {
         }}
       />
       <p style={{ maxWidth: 310 }}>
-        Personal blog by <a href="https://github.com/cloudups">Feiqi Shi</a>.{' '}
+        在这里，记录着<a href="https://github.com/cloudups">我</a>的滴滴点点{' '}
         <br />
-        Enjoy life, enjoy coding.
+        （: 生命不息，奋斗不止 :)
       </p>
     </div>
   );

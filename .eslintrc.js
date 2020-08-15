@@ -1,19 +1,9 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "es6": true,
+  extends: ['airbnb-typescript'],
+  parserOptions: {
+    project: './tsconfig.json',
   },
-  "plugins": [
-    "react",
-  ],
-  "globals": {
-    "graphql": false,
-  },
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true,
-    },
+  rules: {
+    'linebreak-style': ["off", "windows"]
   }
-}
+};

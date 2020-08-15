@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 import Toggle from './Toggle';
 import Helmet from 'react-helmet';
 
@@ -7,7 +7,20 @@ import { rhythm, scale } from '../utils/typography';
 import sun from '../assets/sun.png';
 import moon from '../assets/moon.png';
 
-class Layout extends React.Component {
+declare global {
+  interface Window {
+    __theme: string;
+    __onThemeChange: () => void;
+    __setPreferredTheme: (className: string) => void;
+  }
+}
+
+interface LayoutProps {
+  location: Location;
+  title: string;
+}
+
+class Layout extends React.Component<LayoutProps> {
   state = {
     theme: null,
   };
@@ -19,7 +32,7 @@ class Layout extends React.Component {
   }
   renderHeader() {
     const { location, title } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
+    const rootPath = withPrefix('/');
 
     if (location.pathname === rootPath) {
       return (

@@ -21,10 +21,18 @@ interface SEOProps {
   image?: string;
   meta?: [];
   slug?: string;
-  title: string;
+  title?: string;
+  lang?: string;
 }
 
-function SEO({ meta, image, title, description, slug, lang = 'en' }) {
+const SEO: React.FC<SEOProps> = ({
+  meta,
+  image,
+  title,
+  description,
+  slug,
+  lang = 'en',
+}) => {
   return (
     <StaticQuery
       query={query}
@@ -94,7 +102,7 @@ function SEO({ meta, image, title, description, slug, lang = 'en' }) {
       }}
     />
   );
-}
+};
 
 SEO.defaultProps = {
   meta: [],

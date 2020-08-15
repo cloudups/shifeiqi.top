@@ -28,7 +28,36 @@ function pointerCoord(event) {
   return { x: 0, y: 0 };
 }
 
-export default class Toggle extends PureComponent {
+interface ToggleProps {
+  onFocus?: (event: React.SyntheticEvent) => void;
+  onBlur?: (event: React.SyntheticEvent) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  icons?: {
+    [propName: string]: React.ReactElement;
+  };
+  disabled?: boolean;
+  checked?: boolean;
+}
+
+interface ToggleState {
+  checked: boolean;
+  hasFocus: boolean;
+}
+
+export default class Toggle extends PureComponent<ToggleProps, ToggleState> {
+  previouslyChecked: boolean;
+  input: HTMLInputElement;
+  moved?: boolean;
+  startX: number;
+  touchStarted: boolean;
+  hadFocusAtTouchStart: boolean;
+  touchMoved: boolean;
+
+  static defaultProps = {
+    icons: {},
+  };
+
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -88,7 +117,7 @@ export default class Toggle extends PureComponent {
     }
   }
 
-  handleTouchEnd(event) {
+  handleTouchEnd(event: React.SyntheticEvent) {
     if (!this.touchMoved) return;
     const checkbox = this.input;
     event.preventDefault();

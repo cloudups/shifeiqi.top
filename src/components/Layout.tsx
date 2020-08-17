@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withPrefix } from 'gatsby';
-import Toggle from './Toggle';
 import Helmet from 'react-helmet';
+import Toggle from './Toggle';
 
 import { rhythm, scale } from '../utils/typography';
 import sun from '../assets/sun.png';
@@ -20,10 +20,18 @@ interface LayoutProps {
   title: string;
 }
 
-class Layout extends React.Component<LayoutProps> {
-  state = {
-    theme: null,
-  };
+interface LayoutState {
+  theme: string | null;
+}
+
+class Layout extends React.Component<LayoutProps, LayoutState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      theme: null,
+    };
+  }
+
   componentDidMount() {
     this.setState({ theme: window.__theme });
     window.__onThemeChange = () => {

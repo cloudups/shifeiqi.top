@@ -62,7 +62,7 @@
   "scripts": {
     "start": "gatsby develop",
     "build": "rimraf -rf public && rimraf -rf .cache && gatsby build",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern public .",
+    "lint": "./node_modules/.bin/eslint --ext .ts,.tsx --ignore-pattern public .",
     "format": "prettier --write {gatsby-*.js,src/**/*.{js,jsx,json,css,tsx,ts}}",
     "now-build": "gatsby build",
     "deploy": "npm run build && cp now.json public/",

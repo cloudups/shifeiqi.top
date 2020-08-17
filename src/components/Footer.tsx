@@ -9,6 +9,14 @@ const Footer: React.FC = () => (
     }}
   >
     <a
+      href="https://docs.qq.com/doc/DZEJobWxFeW95a0xw"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      简历
+    </a>{' '}
+    &bull;{' '}
+    <a
       href="https://github.com/cloudups"
       target="_blank"
       rel="noopener noreferrer"

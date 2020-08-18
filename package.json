@@ -66,7 +66,7 @@
     "format": "prettier --write {gatsby-*.js,src/**/*.{js,jsx,json,css,tsx,ts}}",
     "now-build": "gatsby build",
     "deploy": "npm run build && cp now.json public/",
-    "dry": "npm run build && cp now.json public/ && cd public && now",
+    "dry": "npm run build && cp now.json public/ && cd public &&  now alias $(now) shifeiqi.top",
     "js-to-jsx": "node src/utils/js-to-jsx"
   },
   "husky": {

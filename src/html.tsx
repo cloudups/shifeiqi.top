@@ -1,30 +1,29 @@
 import React from 'react';
 
-interface Props {
-  htmlAttributes: object;
-  headComponents: [];
-  bodyAttributes: object;
-  preBodyComponents: [];
+interface HTMLProps {
+  htmlAttributes: React.HTMLAttributes<HTMLElement>;
+  headComponents: Array<React.Component>;
+  bodyAttributes: React.HTMLAttributes<HTMLBodyElement>;
+  preBodyComponents: Array<React.Component>;
   body: string;
-  postBodyComponents: [];
+  postBodyComponents: Array<React.Component>;
 }
 
-const HTML: React.FC<Props> = props => {
-  return (
-    <html {...props.htmlAttributes}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        {props.headComponents}
-      </head>
-      <body {...props.bodyAttributes} className="light">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+const HTML: React.FC<HTMLProps> = props => (
+  <html {...props.htmlAttributes}>
+    <head>
+      <meta charSet="utf-8" />
+      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      {props.headComponents}
+    </head>
+    <body {...props.bodyAttributes} className="light">
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
             (function() {
               window.__onThemeChange = function() {};
               function setTheme(newTheme) {
@@ -54,18 +53,17 @@ const HTML: React.FC<Props> = props => {
               setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
             })();
           `,
-          }}
-        />
-        {props.preBodyComponents}
-        <div
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
-        {props.postBodyComponents}
-      </body>
-    </html>
-  );
-};
+        }}
+      />
+      {props.preBodyComponents}
+      <div
+        key={`body`}
+        id="___gatsby"
+        dangerouslySetInnerHTML={{ __html: props.body }}
+      />
+      {props.postBodyComponents}
+    </body>
+  </html>
+)
 
 export default HTML;

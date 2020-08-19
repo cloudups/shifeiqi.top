@@ -11,7 +11,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.0",
     "eslint": "^7.7.0",
-    "gatsby": "^2.0.76",
+    "gatsby": "^2.24.47",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-ebook": "^1.0.2",
     "gatsby-plugin-feed": "^2.0.8",

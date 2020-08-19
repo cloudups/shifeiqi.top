@@ -36,7 +36,7 @@ JavaScript 块级作用域原理（const & let）
 interface总结  
 
 - **个人博客⭐⭐⭐**  
-~~域名更换 202008181115~~   
+~~[域名更换 202008181115](http://www.shifeiqi.top)~~   
 重写 with TypeScript  
 增加 lint  
 增加 自动测试    

@@ -1,23 +1,22 @@
-import { Link, graphql } from 'gatsby';
-import { formatPostDate, formatReadingTime } from '../utils/helpers';
+import React from 'react';
+import { Link, graphql, PageProps } from 'gatsby';
 
+import { formatPostDate, formatReadingTime } from '../utils/helpers';
 import Bio from '../components/Bio';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import Panel from '../components/Panel';
-import React from 'react';
 import SEO from '../components/SEO';
 import get from 'lodash/get';
 import { rhythm } from '../utils/typography';
-import { PageProps } from 'gatsby';
 
-type LocaleLookUpInfo = { translationStrings: any } & {
+interface LocaleLookUpInfo {
+  translationStrings: any;
   langKey: string;
   slug: string;
-};
-type IndexPageProps = PageProps<{}, LocaleLookUpInfo>;
+}
 
-const BlogIndexTemplate: React.FC<IndexPageProps> = props => {
+const BlogIndexTemplate: React.FC<PageProps<{}, LocaleLookUpInfo>> = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title');
   const langKey = props.pageContext.langKey;
   const posts = get(props, 'data.allMarkdownRemark.edges');

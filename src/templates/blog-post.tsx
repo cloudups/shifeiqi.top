@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, graphql, PageProps } from 'gatsby';
 import get from 'lodash/get';
 
 import '../fonts/fonts-post.css';
@@ -16,7 +16,6 @@ import {
   loadFontsForCode,
   replaceAnchorLinksByLanguage,
 } from '../utils/i18n';
-import { PageProps } from 'gatsby';
 
 const GITHUB_USERNAME = 'gaearon';
 const GITHUB_REPO_NAME = 'overreacted.io';

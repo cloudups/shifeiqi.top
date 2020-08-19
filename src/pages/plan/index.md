@@ -29,11 +29,12 @@ React源码：时间调度机制
 React源码：hook 实现原理
 同步模式总结  
 
-- **ECMA-262⭐⭐⭐⭐**  
+- **JavaScript & ECMA-262⭐⭐⭐⭐**  
 JavaScript 执行栈及执行上下文  
 JavaScript 块级作用域原理（const & let）   
 异步发展历史（callback、thunk、Promise、Generator、Async/Await）   
 前端模块发展历史    
+节流与防抖  
 
 - **TypeScript⭐⭐⭐⭐⭐**  
 interface基础  

@@ -1,11 +1,10 @@
 import React from 'react';
 
-interface HTMLProps {
+type HTMLProps = { body: string; } & {
   htmlAttributes: React.HTMLAttributes<HTMLElement>;
-  headComponents: Array<React.Component>;
   bodyAttributes: React.HTMLAttributes<HTMLBodyElement>;
+  headComponents: Array<React.Component>;
   preBodyComponents: Array<React.Component>;
-  body: string;
   postBodyComponents: Array<React.Component>;
 }
 

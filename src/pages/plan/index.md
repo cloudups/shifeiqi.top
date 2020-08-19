@@ -32,9 +32,12 @@ React源码：hook 实现原理
 - **ECMA-262⭐⭐⭐⭐**  
 JavaScript 执行栈及执行上下文  
 JavaScript 块级作用域原理（const & let）   
+异步发展历史（callback、thunk、Promise、Generator、Async/Await）   
+前端模块发展历史    
 
 - **TypeScript⭐⭐⭐⭐⭐**  
-interface总结  
+interface基础  
+联合类型和交叉类型    
 
 - **个人博客⭐⭐⭐**  
 ~~[域名更换 202008181115](http://www.shifeiqi.top)~~   
@@ -48,3 +51,4 @@ interface总结
 20200818-1056: 初始化文档  
 20200818-1113: 更改标题 & 完成博客域名更换  
 20200819-0959：简历更新完成，添加到腾讯文档，博客首页增加建立入口  
+20200819-1234: 增加异步、模块

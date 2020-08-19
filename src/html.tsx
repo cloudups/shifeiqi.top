@@ -64,6 +64,6 @@ const HTML: React.FC<HTMLProps> = props => (
       {props.postBodyComponents}
     </body>
   </html>
-)
+);
 
 export default HTML;

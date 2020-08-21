@@ -9,9 +9,13 @@ cta: 'plan'
 - **跑步⭐⭐⭐⭐⭐**  
 路程6km
 
+---
+
 ### 工作  
 - **~~简历更新⭐⭐⭐⭐⭐~~**  
 - **简历-项目总结⭐⭐⭐⭐⭐**
+
+---
 
 ### 技术
 - **贪心算法⭐⭐⭐**  
@@ -29,12 +33,16 @@ React源码：时间调度机制
 React源码：hook 实现原理
 同步模式总结  
 
+- **Redux原理总结⭐⭐⭐⭐⭐**  
+
 - **JavaScript & ECMA-262⭐⭐⭐⭐**  
 JavaScript 执行栈及执行上下文  
 JavaScript 块级作用域原理（const & let）   
 异步发展历史（callback、thunk、Promise、Generator、Async/Await）   
 前端模块发展历史    
 节流与防抖  
+iterator，可迭代协议/迭代器协议  
+属性描述符  
 
 - **TypeScript⭐⭐⭐⭐⭐**  
 interface基础  
@@ -47,6 +55,8 @@ interface基础
 增加 自动测试    
 完善文档  
 开源  
+
+---
 
 ### CHANGELOG
 20200818-1056: 初始化文档  

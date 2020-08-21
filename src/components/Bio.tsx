@@ -6,7 +6,6 @@ const Bio: React.FC = () => (
   <div
     style={{
       display: 'flex',
-      marginBottom: rhythm(2),
     }}
   >
     <img

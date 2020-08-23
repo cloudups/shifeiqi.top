@@ -9,7 +9,7 @@ const Footer: React.FC = () => (
     }}
   >
     <a
-      href="https://docs.qq.com/pdf/DZGlZSHJWU0xmWlZ6"
+      href="https://docs.qq.com/pdf/DZEZ6b25DY1RNaFN2"
       target="_blank"
       rel="noopener noreferrer"
     >

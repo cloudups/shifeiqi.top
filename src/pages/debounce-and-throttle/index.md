@@ -52,7 +52,7 @@ cta: 'float'
 
 ---
 
-## 👉 例二：通过 节流处理 来降低卡顿
+### 👉 例二：通过 节流处理 来降低卡顿
 
 节流（throttle）的思想是：存在固定值**wait**，当响应函数被触发时延迟 **wait** 毫秒执行响应函数。在这段时间内不再响应触发事件。
 
@@ -68,6 +68,6 @@ cta: 'float'
 
 ---
 
-## 👉 例三：通过框架方案解决。
+### 👉 例三：通过框架方案解决。
 
 参考：[React Concurrent 模式介绍](https://zh-hans.reactjs.org/docs/concurrent-mode-intro.html)

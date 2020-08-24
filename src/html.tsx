@@ -1,12 +1,12 @@
 import React from 'react';
 
-type HTMLProps = { body: string; } & {
+type HTMLProps = { body: string } & {
   htmlAttributes: React.HTMLAttributes<HTMLElement>;
   bodyAttributes: React.HTMLAttributes<HTMLBodyElement>;
   headComponents: Array<React.Component>;
   preBodyComponents: Array<React.Component>;
   postBodyComponents: Array<React.Component>;
-}
+};
 
 const HTML: React.FC<HTMLProps> = props => (
   <html {...props.htmlAttributes}>

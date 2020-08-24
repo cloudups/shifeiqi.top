@@ -34,19 +34,28 @@ React源码：hook 实现原理
 同步模式总结  
 
 - **Redux原理总结⭐⭐⭐⭐⭐**  
+发布/订阅模式  
+facebook flux  
+react-redux  
 
 - **JavaScript & ECMA-262⭐⭐⭐⭐**  
 JavaScript 执行栈及执行上下文  
 JavaScript 块级作用域原理（const & let）   
 异步发展历史（callback、thunk、Promise、Generator、Async/Await）   
 前端模块发展历史    
-节流与防抖  
+~~节流与防抖~~  
 iterator，可迭代协议/迭代器协议  
 属性描述符  
 
 - **TypeScript⭐⭐⭐⭐⭐**  
 interface基础  
 联合类型和交叉类型    
+
+- **W3C 标准/规范**  
+**DOM（事件和节点）**  参考：[WHATWG-DOM](https://dom.spec.whatwg.org/), [DOM介绍](https://wangdoc.com/javascript/dom/index.html)  
+BOM（window，cookie，storage，history，web worker）  
+同源策略（URL，location）    
+
 
 - **个人博客⭐⭐⭐**  
 ~~[域名更换 202008181115](http://www.shifeiqi.top)~~   
@@ -62,4 +71,6 @@ interface基础
 20200818-1056: 初始化文档  
 20200818-1113: 更改标题 & 完成博客域名更换  
 20200819-0959：简历更新完成，添加到腾讯文档，博客首页增加建立入口  
-20200819-1234: 增加异步、模块
+20200819-1234: 增加异步、模块  
+20200823-1430：完成 **防抖、节流**
+20200824-1045: 增加DOM规范  

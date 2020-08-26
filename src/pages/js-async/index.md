@@ -5,6 +5,8 @@ spoiler: 🥕 callback、generator、thunk and promise、async/await.
 cta: 'async'
 ---
 
+> 请注意：本文中所有代码均为伪码，并不能实际运行！
+
 ### 1. **callback** 产生的问题  
 
 众所周知，使用 **callback** 的编程模型会产生[回调地狱](http://callbackhell.com/)现象: **代码中使用 `})` 层层嵌套，像金字塔一样**。  
@@ -13,11 +15,11 @@ cta: 'async'
 ```ts
 // 回调接口
 interface Callback {
-    (ret: Function) => void
+    (ret: Function) : void
 }
 // 异步操作接口
 interface Async {
-    (cb: Callback) => void
+    (cb: Callback) : void
 }
 
 // 初始化异步操作
@@ -49,11 +51,11 @@ async1(function(ret1) {
 ```ts
 // 回调接口
 interface Callback {
-    (ret: Function) => void
+    (ret: Function) : void
 }
 // 异步操作接口
 interface Async {
-    (cb: Callback) => void
+    (cb: Callback) : void
 }
 
 // 初始化异步操作
@@ -74,7 +76,7 @@ const ret3 = async3() // 等待异步操作 async2 完成再执行
 
 ---
 
-### 3. Generator + yield（函数对象） 
+### 3. Generator + yield（函数对象） ：Demo方案
 
 通过将**异步操作函数对象** 从 `Generator` 中 `yield` 出去，在 `Generator执行器` 中去执行异步操作，从而达到**以同步代码的形式来组织异步逻辑**。 
 所以，异步操作的代码组织形式如下：  
@@ -82,11 +84,11 @@ const ret3 = async3() // 等待异步操作 async2 完成再执行
 ```ts
 // 回调接口
 interface Callback {
-    (ret: Function) => void
+    (ret: Function) : void
 }
 // 异步操作接口
 interface Async {
-    (cb: Callback) => void
+    (cb: Callback) : void
 }
 
 // 初始化异步操作函数对象 
@@ -133,48 +135,107 @@ const executor: GenExecutor = (genFunction) => {
 
 虽然这种解决方案已经满足了我们的要求：**以同步代码组织异步逻辑**，但是存在以下缺陷：  
 1.**yield + 函数对象 [yield async]** 的形式并没有直观的表达出异步操作，更完美的方式应当是 **yield + 函数调用 [yield async()]**。  
-2.异步函数无法传参。
+2.异步函数无法传参。  
+
+这种方案只能当作玩具 (lll￢ω￢)。  
 
 ---
 
-### 异步模式： Generator + thunk 
+### 4. Generator + thunk : 古老的异步解决方案 
 
+**Generator + Thunk** 的组合方案现在很少有人在用，但是其中蕴含的思想确实值得借鉴的：**通过`延迟执行异步操作`，来达到以`同步代码组织异步逻辑`的目的**。
 
-1. 什么是 Thunk
+- **什么是 Thunk ？**  
 
-2. 定义 Thunk
+**Thunk** 是函数式编程中的一个概念，具体见: [Haskell Thunk](https://wiki.haskell.org/Thunk)，在 JavaScript 中只需要将 **Thunk** 理解为符合以下类型约束的函数对象即可：  
 
 ```ts
+interface Callback {
+    (res: any) : void
+}
+
+// Thunk 类型
 interface Thunk {
-    (cb: Callback) => void
+    (cb: Callback) : void
 }
 ```
 
-3. 如何将异步函数转化为Thunk
+- **Generator + Thunk 组合的前提**  
+
+**Generator + Thunk** 方案可以使用的前提是：**异步操作函数**需要返回一个接受回调函数的**Thunk函数对象**。即我们的**异步操作函数**应当符合以下接口类型约束：  
 
 ```ts
-const thunkify = (asyncFunc: AsyncWithParams): Thunk => {
-
+interface ThunkAsync {
+    (...params: any[]): Thunk
 }
 ```
 
-4. generator + thunk 执行器
+而我们的异步函数的类型一般都是以下类型的：  
+
+```ts
+interface Async {
+    (...preParams: any[], cb: Callback) : void
+}
+```
+
+所以我们需要一个`高阶函数 thunkify`，实现转换的效果：`ThunkAsync = thunkify(Async)`。以下是一个简单的实现：  
+
+```ts
+function thunkify(func: Async): Function {
+    
+    return function() {
+        const args = [];
+        for(let i = 0; i < arguments.length; i++) 
+            args[i] = arguments[i];
+        
+        const thunk: Thunk = (cb) => {
+            func(...args, cb);
+        }
+
+        return thunk;
+    }
+}
+```
+
+- **Generator + Thunk 实施**  
+
+通过此方案我们写出的代码应当如下：  
+
+```ts
+//初始化异步操作
+const async1: ThunkAsync = ...
+const async2: ThunkAsync = ...
+const async3: ThunkAsync = ...
+
+function*() {
+    const ret1 = yield async1(param1, param2...);
+    const ret2 = yield async2(param1, param2...);
+    const ret3 = yield async3(param1, param2...);
+}
+```
+
+Generator 执行器代码如下：  
+
+```ts
+const executor: GenExecutor = (genFunction) => {
+    const gen: Generator = genFunction();
+
+    const next: Callback = (res) => {
+        const ret: YieldResult = gen.next(res);
+
+        if(ret.done) return;
+        // 调用异步操作，在回调中进行递归调用
+        const thunk = ret.value;
+        thunk((cbRet) => {
+            next(cbRet);
+        })
+    }
+
+    next();
+}
+```
+
+### Generator + Promise : ES6 中的完美方案
 
 
-5. 异步代码组织形式
-
-
-
-### 使用 promise 解决回调地狱问题
-
-### generator + promise 解决回调地狱问题
-
-### async/await 解决回调地狱问题
-
-**参考资料：**  
-1. [Haskell-Thunk](https://wiki.haskell.org/Thunk)
-
-
-### Generator + Promise
-
-### Async & Await
+### Async & Await : ES7 COME ON!

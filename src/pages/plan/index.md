@@ -7,7 +7,7 @@ cta: 'plan'
 
 ### 生活  
 - **跑步⭐⭐⭐⭐⭐**  
-路程6km
+路程6km  
 
 ---
 
@@ -30,7 +30,7 @@ React源码：render阶段：completeWork
 React源码：commit阶段：commitRoot  
 React源码：事件系统（事件代理）  
 React源码：时间调度机制    
-React源码：hook 实现原理
+React源码：hook 实现原理  
 同步模式总结  
 
 - **Redux原理总结⭐⭐⭐⭐⭐**  
@@ -39,13 +39,16 @@ facebook flux
 react-redux  
 
 - **JavaScript & ECMA-262⭐⭐⭐⭐**  
-JavaScript 执行栈及执行上下文  
-JavaScript 块级作用域原理（const & let）   
-异步发展历史（callback、thunk、Promise、Generator、Async/Await）   
-前端模块发展历史    
 ~~节流与防抖~~  
 iterator，可迭代协议/迭代器协议  
 属性描述符  
+类型辨别《typeof & instanceof》  
+异步（callback、thunk、Promise、Generator、Async/Await）  
+模块化（AMD，CMD，ES6）  
+运行机制（执行上下文、闭包）  
+原型链  
+面向对象（class，构造函数）  
+块级作用域原理（const & let）   
 
 - **TypeScript⭐⭐⭐⭐⭐**  
 interface基础  
@@ -54,8 +57,15 @@ interface基础
 - **W3C 标准/规范**  
 **DOM（事件和节点）**  参考：[WHATWG-DOM](https://dom.spec.whatwg.org/), [DOM介绍](https://wangdoc.com/javascript/dom/index.html)  
 BOM（window，cookie，storage，history，web worker）  
-同源策略（URL，location）    
+同源策略（URL，location）、跨域、Ajax/fetch      
+flex 布局  
+浏览器缓存机制  
 
+- **网络**  
+TCP（三次握手、四次挥手）   
+Http  
+Https  
+DNS解析  
 
 - **个人博客⭐⭐⭐**  
 ~~[域名更换 202008181115](http://www.shifeiqi.top)~~   

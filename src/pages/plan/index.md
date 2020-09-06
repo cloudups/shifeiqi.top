@@ -61,7 +61,7 @@ BOM（window，cookie，storage，history，web worker）
 同源策略（URL，location）、跨域、Ajax/fetch      
 flex 布局  
 浏览器缓存机制  
-web worker
+web worker  
 
 - **网络**  
 TCP（三次握手、四次挥手）   

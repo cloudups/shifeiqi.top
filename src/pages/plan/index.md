@@ -63,11 +63,21 @@ flex 布局
 浏览器缓存机制  
 web worker  
 
+- **css**  
+盒模型  
+定位（static、relative、absolute）  
+float  
+BFC（会计格式化上下文）  
+居中布局(水平、垂直)
+
 - **网络**  
 TCP（三次握手、四次挥手）   
 Http  
 Https  
 DNS解析  
+
+- **函数式**  
+
 
 - **个人博客⭐⭐⭐**  
 ~~[域名更换 202008181115](http://www.shifeiqi.top)~~   

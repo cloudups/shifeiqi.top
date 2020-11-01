@@ -207,7 +207,7 @@ const async1: ThunkAsync = ...
 const async2: ThunkAsync = ...
 const async3: ThunkAsync = ...
 
-function*() {
+function* gen() {
     const ret1 = yield async1(param1, param2...);
     const ret2 = yield async2(param1, param2...);
     const ret3 = yield async3(param1, param2...);
@@ -235,7 +235,65 @@ const executor: GenExecutor = (genFunction) => {
 }
 ```
 
-### Generator + Promise : ES6 中的完美方案
+### Generator + Promise : ES6 中的完美方案  
 
+- 使用形式  
 
-### Async & Await : ES7 COME ON!
+```ts
+interface PromiseAsync {
+    (...params) : Promise
+}
+
+//初始化异步操作
+const async1: PromiseAsync = ...
+const async2: PromiseAsync = ...
+const async3: PromiseAsync = ...
+
+function* gen() {
+    const ret1 = yield async1(param1, param2...);
+    const ret2 = yield async2(param1, param2...);
+    const ret3 = yield async3(param1, param2...);
+}
+```
+  
+- Generator 执行器实现
+
+```ts
+const executor: GenExecutor = (genFunction) => {
+    const gen: Generator = genFunction();
+
+    const next: Callback = (res) => {
+        const ret: YieldResult = gen.next(res);
+
+        if(ret.done) return;
+        // 调用异步操作，在回调中进行递归调用
+        const promise = ret.value;
+        promise.then((value) => {
+            next(value);
+        })；
+    }
+
+    next();
+}
+```
+
+### async/await 
+
+- 使用形式  
+
+```ts
+interface PromiseAsync {
+    (...params) : Promise
+}
+
+// 初始化异步操作
+const async1: PromiseAsync = ...
+const async2: PromiseAsync = ...
+const async3: PromiseAsync = ...
+
+function async async() {
+    const ret1 = await async1(param1, param2...);
+    const ret2 = await async2(param1, param2...);
+    const ret3 = await async3(param1, param2...);
+}
+```

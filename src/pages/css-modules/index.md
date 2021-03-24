@@ -39,7 +39,7 @@ css 规范自从被制定开始就存在全局作用域的特性，使得散落�
 
 ```css{3}
 /* a.module.css */
-/* 选取一个独一无二的classname作为选择器名称，以保证不会与其他样式名称冲突 */
+/* unique selector name: 选取一个独一无二的classname作为选择器名称，以保证不会与其他样式名称冲突 */
 .module-a-btn {
     color: red;
 }
@@ -47,7 +47,7 @@ css 规范自从被制定开始就存在全局作用域的特性，使得散落�
 
 ```css{3}
 /* b.module.css */
-/* 通过后代选择器，保证不会与其他选择器产生样式冲突 */
+/* combinator: 通过后代选择器，保证不会与其他选择器产生样式冲突*/
 .module-b .btn {
     color: green
 }
@@ -61,11 +61,11 @@ css 规范自从被制定开始就存在全局作用域的特性，使得散落�
 
 #### 2.1 是什么以及解决了什么问题
 
-CSS Modules 是一项规范，旨在提供模块化、可扩展的CSS。提供了以下特性：
+CSS Modules 是一项规范，旨在提供模块化、可扩展的CSS。该规范提供了以下特性：
 
-- 解决样式冲突。
-- 明确的依赖关系。
 - 无全局作用域 
+- 无样式冲突。
+- 明确的依赖关系。
 
 CSS Modules 规定，一个 CSS 文件就是一个 CSS 模块，模块中所有的 class name 和 animation name 的作用域仅限于在该CSS模块中。
 
@@ -78,7 +78,7 @@ A CSS Module === A CSS File === A CSS Scope
 - 定义 CSS Module 文件。
 
 ```css
-/* style.css */
+/* style.module.css */
 .className {
   color: green;
 }
@@ -86,9 +86,11 @@ A CSS Module === A CSS File === A CSS Scope
 
 - 在 JavaScript 模块中使用示例。
 
+CSS Modules 规定，在 JavaScript 模块中使用样式需要以 es module 的形式导入 css 模块。
+
 ```jsx
-import styles from "./style.css";
-// import { className } from "./style.css";
+import styles from "./style.module.css";
+// import { className } from "./style.module.css";
 
 element.innerHTML = '<div class="' + styles.className + '">';
 ```
@@ -97,8 +99,8 @@ element.innerHTML = '<div class="' + styles.className + '">';
 
 ```jsx
 import React from 'react'
-import styles from "./style.css";
-// import { className } from "./style.css";
+import styles from "./style.module.css";
+// import { className } from "./style.module.css";
 
 export default function() {
 
@@ -108,9 +110,9 @@ export default function() {
 
 #### 2.3 工作原理
 
-[css loader](https://webpack.js.org/loaders/css-loader/) 实现了CSS Modules规范。其原理是在编译期对 CSS Module 中的样式名称进行处理，自动为样式名称加上哈希码后缀（或其他规则），使得每一个样式名称都是独一无二的。
+现阶段 CSS Modules 只能借助编译工具来实现。[css loader](https://webpack.js.org/loaders/css-loader/) 实现了CSS Modules规范。其原理是在编译期对 CSS Module 中的样式名称进行处理，自动为样式名称加上哈希码后缀（或其他规则），使得每一个样式名称都是独一无二的。
 
-css-loader转译前的 CSS 文件：
+css-loader编译前的 CSS 文件：
 
 ```css
 /* btn.module.css */
@@ -119,8 +121,7 @@ css-loader转译前的 CSS 文件：
 }
 ```
 
-
-css-loader转译后的 CSS 文件：
+css-loader编译后的 CSS 文件：
 
 ```css{2}
 /* btn.module.css */
@@ -145,13 +146,80 @@ export default function() {
 
 ---
 
-## 3 配套方案
+## 3 Q&A
 
-1. css-loader 配置
+#### **3.1 是不是所有的 css module 文件名称要以 `.module.css` 结尾**
+
+不是必须，但是推荐以 `.module.css` 结尾命名文件。此处与 webpack loader 的匹配规则相对应。
+
+#### **3.2 css 定义的 class name 的命名规范**
+
+官方推荐 驼峰式 写法。
+
+```css{2}
+/* style.module.css */
+.redBtn {
+    color: red
+}
+.green-btn {
+    color: green
+}
+```
+
+#### **3.3 css 定义的class name 与 导入es module的样式对象之间的关系**
+
+css-loader提供了不同的映射规则，详见css-loader配置。下面是两种常用的映射关系。
+
+- 一一对应的关系
+
+样式名称的定义与在 es module 中的使用要一一对应。
+
+```css{5}
+/* style.module.css */
+.redBtn {
+    color: red
+}
+.green-btn {
+    color: green
+}
+```
+
+```jsx{4}
+import styles from './style.module.css'
+
+const redBtn = '<button class="' + styles.redBtn + '"></button>';
+const greenBtn = '<button class="' + styles['green-btn'] + '"></button>';
+```
+
+- 短横线分割映射到驼峰
+
+编译工具会自动将短横线命名的样式名称转化为驼峰式，因此只需要在 es module 中使用短横线命名对应的驼峰式命名即可。
+
+```css{5}
+/* style.module.css */
+.redBtn {
+    color: red
+}
+.green-btn {
+    color: green
+}
+```
+
+```jsx{4}
+import styles from './style.module.css'
+
+const redBtn = '<button class="' + styles.redBtn + '"></button>';
+const greenBtn = '<button class="' + styles.greenBtn + '"></button>';
+```
+
+---
+## 4 配套方案
+
+#### 4.1 css-loader 配置
 
 https://github.com/webpack-contrib/css-loader#modules
 
-2. typescript 代码提示
+#### 4.2 vscode & IDE 辅助开发
 
 ![css modules demo](./typescript-plugin-css-modules-example.gif)
 

@@ -8,14 +8,14 @@ const Footer: React.FC = () => (
       paddingTop: rhythm(1),
     }}
   >
-    <a
+    {/* <a
       href="https://docs.qq.com/pdf/DZGxXVldnVURiUm5L"
       target="_blank"
       rel="noopener noreferrer"
     >
       简历
     </a>{' '}
-    &bull;{' '}
+    &bull;{' '} */}
     <a
       href="https://github.com/cloudups"
       target="_blank"
